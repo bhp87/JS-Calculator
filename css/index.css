@@ -6,12 +6,12 @@ body {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    width: 300px;
+    width: 280px;
     margin: 50px auto;
     background-color: black;
     border: 1px solid #ccc;
     border-radius: 5px;
-    padding: 10px;
+    padding: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
@@ -73,7 +73,7 @@ body {
 
 .AC,
 .del {
-    background-color: rgba(255, 0, 0, 0.521);
+    background-color: dodgerblue;
 }
 
 
