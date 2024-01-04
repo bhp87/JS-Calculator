@@ -1,0 +1,89 @@
+body {
+    text-align: center;
+}
+
+.main-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 300px;
+    margin: 50px auto;
+    background-color: black;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.display-container {
+    display: flex;
+    flex-wrap: wrap;
+
+    border: 1px solid #ccc;
+    width: 250px;
+    height: 60px;
+    margin-bottom: 10px;
+
+    padding: 5px;
+
+}
+
+.result-section,
+.button-section {
+    background-color: #b2b9b7;
+    height: 30px;
+    width: 260px;
+    padding: 5px;
+    font-size: 1.8em;
+    font-weight: initial;
+    text-align: right;
+    border: 1px solid #ccc;
+    /* Add a border to both sections */
+}
+
+.result-section {
+    border-radius: 5px 5px 0 0;
+    border-bottom: none;
+}
+
+.button-section {
+    border-radius: 0 0 5px 5px;
+    /* Set border-radius for .button-section, leaving only the top corners rounded */
+    border-top: none;
+    /* Remove the bottom border for .button-section */
+}
+
+.calculator-body_container {
+    width: 500px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.button {
+    width: 60px;
+    height: 60px;
+    margin: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #217C7E;
+}
+
+.AC,
+.del {
+    background-color: rgba(255, 0, 0, 0.521);
+}
+
+
+.\/,
+.\*,
+.\-,
+.\+,
+.\%,
+.\.,
+.\+\/\-,
+.\= {
+    background-color: #FF8F1F;
+}
