@@ -1,3 +1,41 @@
+
+//keyboard support
+document.addEventListener('keydown', (event) => {
+    const key = event.key;
+
+    // Map keyboard keys to corresponding button keys
+    const keyMap = {
+        'Escape': 'AC',
+        'Delete': 'del',
+        'Backspace': 'del',
+        '%': '%',
+        '/': '/',
+        '7': '7',
+        '8': '8',
+        '9': '9',
+        '*': '*',
+        '4': '4',
+        '5': '5',
+        '6': '6',
+        '-': '-',
+        '1': '1',
+        '2': '2',
+        '3': '3',
+        '+': '+',
+        '.': '.',
+        '0': '0',
+        'Enter': '=',
+    };
+
+    const buttonKey = keyMap[key];
+
+    if (buttonKey) {
+        handleButtonClick(buttonKey);
+    }
+});
+
+
+//keys of the calculator to render
 const buttonOrder = [
     'AC', 'del', '%', '/',
     '7', '8', '9', '*',
@@ -5,7 +43,7 @@ const buttonOrder = [
     '1', '2', '3', '+',
     '.', '0', '+/-', '='
 ];
-
+//rendering the buttons dynamicly
 const calculatorContainer = document.querySelector('.calculator-body_container');
 const createButtons = () => {
     for (const buttonKey of buttonOrder) {
@@ -29,6 +67,7 @@ let lastOperator = '';
 const displayLowerContainer = document.querySelector('.button-section');
 const displayUpperContainer = document.querySelector('.result-section');
 
+//interaction with calculator buttons
 
 const handleButtonClick = (buttonKey) => {
     switch (buttonKey) {
@@ -53,7 +92,7 @@ const handleButtonClick = (buttonKey) => {
             break;
 
         case '+/-':
-            lowerDisplayValue = -parseFloat(lowerDisplayValue);
+            lowerDisplayValue = '-' + lowerDisplayValue;
             displayLowerContainer.innerText = lowerDisplayValue;
             break;
 
@@ -80,11 +119,20 @@ const handleButtonClick = (buttonKey) => {
 
 
 }
+
+//calculation 
 const evaluateExpression = (lowerDisplayValue) => {
     const operators = ['+', '-', '*', '/'];
-    const expression = lowerDisplayValue.split(/([+\-*/])/);
+    let expression = lowerDisplayValue.split(/([+\-*/])/);
     const stack = [];
     let currentOperator = '+';
+
+    // Check if the first element is a negative sign
+    if (lowerDisplayValue.length > 0 && lowerDisplayValue[0] === '-') {
+        expression = lowerDisplayValue.substring(1, lowerDisplayValue.length).split(/([+\-*/])/);
+        currentOperator = '-';
+    }
+
 
     for (let i = 0; i < expression.length; i++) {
         const token = expression[i];
@@ -98,6 +146,7 @@ const evaluateExpression = (lowerDisplayValue) => {
                 stack.push(stackTop);
                 percentageOperand = parseFloat(stackTop * token.replace('%', '') / 100);
             }
+
             const operand = percentageOperand === '' ? parseFloat(token) : percentageOperand;
             switch (currentOperator) {
                 case '+':
